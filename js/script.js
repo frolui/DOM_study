@@ -24,3 +24,11 @@ const movieDB = {
     ]
 };
 
+// 1) task solution
+// console.log(document.getElementsByClassName('promo__adv')[0]);
+document.getElementsByClassName('promo__adv')[0].remove();
+
+// 2) task solution
+document.getElementsByClassName('promo__genre')[0].textContent = 'ДРАМА';
+// genre[0]
+// console.log(genre[0].textContent);
