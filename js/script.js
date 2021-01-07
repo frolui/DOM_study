@@ -48,29 +48,43 @@ promo[0].style.cssText = 'height:360px; background:url("img/bg.jpg") center cent
 // console.log(document.styleSheets); 
 
 // 4 and 5) task solution
-let list = document.querySelectorAll('.promo__interactive-item');
-console.log(list);
+movieDB.movies = movieDB.movies.sort();
 
-copyDB.movies = copyDB.movies.sort();
+let container = document.querySelector('.promo__interactive-list');
+container.innerHTML = '';
+
+for (let i = 0; i < movieDB.movies.length; i++){
+    container.innerHTML += `
+    <li class="promo__interactive-item">${i + 1}. ${movieDB.movies[i]}
+        <div class="delete"></div>
+    </li>`;
+}
+
+console.log(container);
+
+// let list = document.querySelectorAll('.promo__interactive-item');
+
+// movieDB.movies = movieDB.movies.sort();
+
+// list.forEach((item, i) =>{
+//     item.textContent = `${i + 1}. ${movieDB.movies[i]}`;
+//     // console.log(copyDB.movies[i]);
+//     i++;
+// });
 
 
 
-console.log(list);
 
-// for (let i = 0; i < 5; i++){
-//     item[i].textContent = `${i + 1}) ${copyDB.movies[i]}`;
-//     console.log(copyDB.movies[i]);
-// }
-let butt = document.querySelector('button');
-console.log(butt);
+// // for (let i = 0; i < 5; i++){
+// //     item[i].textContent = `${i + 1}) ${copyDB.movies[i]}`;
+// //     console.log(copyDB.movies[i]);
+// // }
+// let butt = document.querySelector('button');
+// console.log(butt);
 
-butt.addEventListener('click', (e)=>{
-    e.preventDefault();
-    // console.log('fgfhg');
-    // alert('sdnjk');
-    list.forEach((item, i) =>{
-        item.textContent = `${i + 1}. ${copyDB.movies[i]}`;
-        // console.log(copyDB.movies[i]);
-        i++;
-    });
-});
+// butt.addEventListener('click', (e)=>{
+//     e.preventDefault();
+//     // console.log('fgfhg');
+//     // alert('sdnjk');
+    
+// });
