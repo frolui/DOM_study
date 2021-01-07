@@ -24,11 +24,53 @@ const movieDB = {
     ]
 };
 
+const copyDB = {
+    movies: [
+        "Удоли",
+        "АААААААААААААААААА",
+        "Ужос",
+        "СмЭЭЭЭЭрт",
+        "Нихринаси"
+    ]
+};
+
 // 1) task solution
 // console.log(document.getElementsByClassName('promo__adv')[0]);
 document.getElementsByClassName('promo__adv')[0].remove();
 
 // 2) task solution
 document.getElementsByClassName('promo__genre')[0].textContent = 'ДРАМА';
-// genre[0]
-// console.log(genre[0].textContent);
+// console.log(document.getElementsByClassName('promo__genre')[0].textContent);
+
+// 3) task solution
+let promo = document.getElementsByClassName('promo__bg');
+promo[0].style.cssText = 'height:360px; background:url("img/bg.jpg") center center/cover no-repeat;background-position:top;padding:107px 0 0 61px';
+// console.log(document.styleSheets); 
+
+// 4 and 5) task solution
+let list = document.querySelectorAll('.promo__interactive-item');
+console.log(list);
+
+copyDB.movies = copyDB.movies.sort();
+
+
+
+console.log(list);
+
+// for (let i = 0; i < 5; i++){
+//     item[i].textContent = `${i + 1}) ${copyDB.movies[i]}`;
+//     console.log(copyDB.movies[i]);
+// }
+let butt = document.querySelector('button');
+console.log(butt);
+
+butt.addEventListener('click', (e)=>{
+    e.preventDefault();
+    // console.log('fgfhg');
+    // alert('sdnjk');
+    list.forEach((item, i) =>{
+        item.textContent = `${i + 1}. ${copyDB.movies[i]}`;
+        // console.log(copyDB.movies[i]);
+        i++;
+    });
+});
