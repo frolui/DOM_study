@@ -48,17 +48,22 @@ movieDB.movies = movieDB.movies.sort();
 let container = document.querySelector('.promo__interactive-list'),
     forms = document.forms;
 
-console.log(forms[1].elements);    
 container.innerHTML = '';
-
 
 forms[1].addEventListener('submit', (e)=>{
     e.preventDefault();
-    movieDB.movies.push(forms[1].elements[0].value);
+
+    let film = String(forms[1].elements[0].value);
+    
+    if (film.length > 21){
+        film = film.slice(0, 21) + '...';
+    }
+    
+    movieDB.movies.push(film);
+
     container.innerHTML += `
     <li class="promo__interactive-item">${movieDB.movies.length}. ${movieDB.movies[movieDB.movies.length - 1]}
         <div class="delete"></div>
     </li>`;
-    console.log(movieDB.movies);
 });
 
