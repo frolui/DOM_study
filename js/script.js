@@ -15,24 +15,19 @@
 'use strict';
 
 const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
+    movies: []
 };
 
-const copyDB = {
-    movies: [
-        "Удоли",
-        "АААААААААААААААААА",
-        "Ужос",
-        "СмЭЭЭЭЭрт",
-        "Нихринаси"
-    ]
-};
+// const movieDB = {
+//     movies: [
+//         "Логан",
+//         "Лига справедливости",
+//         "Ла-ла лэнд",
+//         "Одержимость",
+//         "Скотт Пилигрим против..."
+//     ]
+// };
+
 
 // 1) task solution
 // console.log(document.getElementsByClassName('promo__adv')[0]);
@@ -50,41 +45,20 @@ promo[0].style.cssText = 'height:360px; background:url("img/bg.jpg") center cent
 // 4 and 5) task solution
 movieDB.movies = movieDB.movies.sort();
 
-let container = document.querySelector('.promo__interactive-list');
+let container = document.querySelector('.promo__interactive-list'),
+    forms = document.forms;
+
+console.log(forms[1].elements);    
 container.innerHTML = '';
 
-for (let i = 0; i < movieDB.movies.length; i++){
+
+forms[1].addEventListener('submit', (e)=>{
+    e.preventDefault();
+    movieDB.movies.push(forms[1].elements[0].value);
     container.innerHTML += `
-    <li class="promo__interactive-item">${i + 1}. ${movieDB.movies[i]}
+    <li class="promo__interactive-item">${movieDB.movies.length}. ${movieDB.movies[movieDB.movies.length - 1]}
         <div class="delete"></div>
     </li>`;
-}
+    console.log(movieDB.movies);
+});
 
-console.log(container);
-
-// let list = document.querySelectorAll('.promo__interactive-item');
-
-// movieDB.movies = movieDB.movies.sort();
-
-// list.forEach((item, i) =>{
-//     item.textContent = `${i + 1}. ${movieDB.movies[i]}`;
-//     // console.log(copyDB.movies[i]);
-//     i++;
-// });
-
-
-
-
-// // for (let i = 0; i < 5; i++){
-// //     item[i].textContent = `${i + 1}) ${copyDB.movies[i]}`;
-// //     console.log(copyDB.movies[i]);
-// // }
-// let butt = document.querySelector('button');
-// console.log(butt);
-
-// butt.addEventListener('click', (e)=>{
-//     e.preventDefault();
-//     // console.log('fgfhg');
-//     // alert('sdnjk');
-    
-// });
