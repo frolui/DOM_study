@@ -48,7 +48,7 @@ movieDB.movies = movieDB.movies.sort();
 let container = document.querySelector('.promo__interactive-list'),
     form = document.forms[1];
 
-container.innerHTML = '';
+container.innerHTML = '';    
 
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -57,26 +57,35 @@ form.addEventListener('submit', (e)=>{
     let film;
     String(form.elements[0].value).length > 21 ? film = String(form.elements[0].value).slice(0, 21) + '...' : film = form.elements[0].value;
     
-    movieDB.movies.push(film);
+    movieDB.movies.push(film);   
+
+    form.elements[1].checked === true ? console.log('add favorite film') : console.log('just usual film');
+    makingHTML();
+
+    console.log(movieDB.movies);
+});
+
+function makingHTML(){
+
+    container.innerHTML = '';
 
     let len = movieDB.movies.length;
 
-    container.innerHTML += `
-    <li class="promo__interactive-item" data-id =${len - 1}>${len}. ${movieDB.movies[len - 1]}
-        <div class="delete"></div>
-    </li>`;
-
+    for (let i = 0; i < len; i++){
+        container.innerHTML += `
+            <li class="promo__interactive-item" data-id =${i}>${i+1}. ${movieDB.movies[i]}
+                <div class="delete"></div>
+            </li>`;
+    } 
     document.querySelectorAll('.delete').forEach(elem =>{
         elem.addEventListener('click', (e)=>{
             e.preventDefault();
-            // next string is deleting element from array
-            // movieDB.movies.splice(elem.parentNode.dataset.id ,elem.parentNode.dataset.id+1);
-            elem.parentNode.remove();            
+            movieDB.movies.splice(elem.parentNode.dataset.id ,1);
+            elem.parentNode.remove();   
+            makingHTML();         
         });
-    });
-
-    form.elements[1].checked === true ? console.log('add favorite film') : console.log('just usual film');
-});
+    });  
+}
 
    
 
