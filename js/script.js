@@ -43,7 +43,6 @@ promo[0].style.cssText = 'height:360px; background:url("img/bg.jpg") center cent
 // console.log(document.styleSheets); 
 
 // 4 and 5) task solution
-movieDB.movies = movieDB.movies.sort();
 
 let container = document.querySelector('.promo__interactive-list'),
     form = document.forms[1];
@@ -68,6 +67,7 @@ form.addEventListener('submit', (e)=>{
 function makingHTML(){
 
     container.innerHTML = '';
+    movieDB.movies = movieDB.movies.sort();
 
     let len = movieDB.movies.length;
 
